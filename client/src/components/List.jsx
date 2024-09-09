@@ -6,7 +6,7 @@ export const List = ({list = [], onDelItem, onCrossItem}) => {
     <ul>
         {
             list.map( (item) => (
-                <ListItem key={item} item={item} onDelItem={onDelItem} onCrossItem={onCrossItem}></ListItem>
+                <ListItem key={item.id} item={item} onDelItem={onDelItem} onCrossItem={onCrossItem}></ListItem>
             ))
         }
     </ul>
