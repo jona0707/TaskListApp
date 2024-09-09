@@ -1,4 +1,4 @@
-import { useControlList } from "../useControlList";
+import { useControlList } from "../hooks/useControlList";
 import { List } from "./List";
 
 export const ListApp = () => {
@@ -21,7 +21,8 @@ export const ListApp = () => {
         <div className="col-5">
           <h2>Crea una tarea:</h2>
           <hr />
-          {/* ComponenteTarea */}
+          {/* Componente AñadirTarea */}
+
         </div>
       </div>
     </>
