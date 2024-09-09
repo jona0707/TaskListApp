@@ -1,4 +1,5 @@
 import { useControlList } from "../useControlList";
+import { List } from "./List";
 
 export const ListApp = () => {
   // Función para retornar valores de los hijos
@@ -15,6 +16,7 @@ export const ListApp = () => {
             Todas: {listLength}, <small>Pendientes:{listPending} </small>
           </h4>
           {/* ComponenteLista */}
+          <List list={list} onDelItem={handleDelItem} onCrossItem={handleCrossItem}/> 
         </div>
         <div className="col-5">
           <h2>Crea una tarea:</h2>

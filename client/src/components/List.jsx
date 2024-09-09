@@ -1,10 +1,12 @@
-export const List = ({list = []}) => {
+import { ListItem } from "./ListItem"
+
+export const List = ({list = [], onDelItem, onCrossItem}) => {
   return (
     <>
     <ul>
         {
             list.map( (item) => (
-                <TodoItem key={item}></TodoItem>
+                <ListItem key={item} item={item} onDelItem={onDelItem} onCrossItem={onCrossItem}></ListItem>
             ))
         }
     </ul>

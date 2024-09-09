@@ -11,7 +11,7 @@ export const listReducer = (initialList = [], action) => {
                 if(item.id == action.payload){
                     return {...item, done: !item.done};
                 }
-                return initialList;
+                return item;
             });
         default:
             return initialList;

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import { listReducer } from './helpers/listReducer'
 
 export const useControlList = () => {
@@ -11,7 +11,7 @@ export const useControlList = () => {
     }]
 
     // Agregar init cuando ya se junte con la base.
-    const [list, dispatch] = useReducer(listReducer, initialState)
+    const [list, dispatch] = useReducer(listReducer, initialState);
 
     // Añadir item
     const handleAddItem = (item) => {
@@ -23,20 +23,20 @@ export const useControlList = () => {
         );
     }
     // Eliminar item
-    const handleDelItem = () => {
+    const handleDelItem = (id) => {
         dispatch(
             {
                 type: 'del_item',
-                payload: item.id
+                payload: id
             }
         );
     }
     // Tachar item
-    const handleCrossItem = () => {
+    const handleCrossItem = (id) => {
         dispatch(
             {
                 type: 'cross_item',
-                payload: item.id
+                payload: id
             }
         );
     }
