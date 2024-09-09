@@ -1,15 +1,14 @@
-// Me llega la lista y el action que desestructuro en type y payload.
-export const listReducer = (initialList = [], {type, payload}) => {
-    switch (type) {
+export const listReducer = (initialList = [], action) => {
+    switch (action.type) {
         case 'add_item':
-            return [...initialList, payload];
+            return [...initialList, action.payload];
 
         case 'del_item':
-            return initialList.filter((item)=> item.id != payload);
+            return initialList.filter((item)=> item.id != action.payload);
 
         case 'cross_item':
             return initialList.map((item)=>{
-                if(item.id == payload){
+                if(item.id == action.payload){
                     return {...item, done: !item.done};
                 }
                 return initialList;
