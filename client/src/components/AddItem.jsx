@@ -14,6 +14,7 @@ export const AddItem = ({ onAddItem }) => {
         done: false
     }
     onAddItem(newItem);
+    onResetForm();
   }
   return (
     <form onSubmit={onFormSubmit}>
@@ -27,7 +28,7 @@ export const AddItem = ({ onAddItem }) => {
         onChange={onInputChange}
       />
       <div className="d-flex justify-content-end">
-        <button type="submit" className="btn btn-primary mt-1">
+        <button type="submit" className="btn btn-primary mt-1" >
           Agregar
         </button>
       </div>
