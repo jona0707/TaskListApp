@@ -1,5 +1,6 @@
 import { useControlList } from "../hooks/useControlList";
 import { AddItem } from "./AddItem";
+import { Footer } from "./Footer";
 import { List } from "./List";
 
 export const ListApp = () => {
@@ -13,8 +14,8 @@ export const ListApp = () => {
     handleCrossItem,
   } = useControlList();
   return (
-    <>
-      <h1>Aplicación de Lista de Tareas con Base de Datos</h1>
+    <div className="root">
+      <h1 className="text-center">Aplicación de Lista de Tareas con Base de Datos</h1>
       <hr />
       <div className="row">
         <div className="col-7">
@@ -37,6 +38,7 @@ export const ListApp = () => {
           <AddItem onAddItem={handleAddItem} />
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
