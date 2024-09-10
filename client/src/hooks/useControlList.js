@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react'
-import { listReducer } from '../helpers/listReducer'
+import { listReducer } from '../utils/listReducer'
 
 export const useControlList = () => {
 

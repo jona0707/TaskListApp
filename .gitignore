@@ -5,7 +5,7 @@
 **/node_modules/
 
 # Ignorar la api:
-/client/utils/api.js
+/client/src/utils/api.js
 
 # Ignorar las carpetas de distribución
 dist/
