@@ -26,7 +26,7 @@ exports.createTask = async (req, res) => {
 exports.deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
-        await Task.destroy({ where: id });
+        await Task.destroy({ where: {id} });
         res.status(204).end(); // Respuesta existosa sin contenido. (eliminación)
     } catch (error) {
         res.status(500).json({ message: 'Error al eliminar tarea.' }, error);
