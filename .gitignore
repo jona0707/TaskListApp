@@ -4,6 +4,9 @@
 # Ignorar la carpeta node_modules en cualquier nivel
 **/node_modules/
 
+# Ignorar la api:
+/client/utils/api.js
+
 # Ignorar las carpetas de distribución
 dist/
 dist-ssr/

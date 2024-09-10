@@ -4,14 +4,20 @@ import { listReducer } from '../helpers/listReducer'
 export const useControlList = () => {
 
     // Momentaneo para mostrar en frontend
-    const initialState = [{
-        id: new Date().getTime(),
-        description: "Recolectar la piedra del alma",
-        done: false,
-    }]
+    const initialState = [];
 
     // Agregar init cuando ya se junte con la base.
     const [list, dispatch] = useReducer(listReducer, initialState);
+
+    // Cargar tareas desde la base
+    const fetchTasks = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/tasks');
+            const data = await response.json();
+        } catch (error) {
+            console.error('Erorr fetching las tasks. ', error)
+        }
+    }
 
     // Añadir item
     const handleAddItem = (item) => {
