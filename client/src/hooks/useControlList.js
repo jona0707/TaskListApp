@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from 'react'
 import { listReducer } from '../utils/listReducer'
+import { getTasks, createTask, deleteTask, updateTask } from '../utils/taskService';
 
 export const useControlList = () => {
 
@@ -10,42 +11,66 @@ export const useControlList = () => {
     const [list, dispatch] = useReducer(listReducer, initialState);
 
     // Cargar tareas desde la base
-    const fetchTasks = async () => {
+    const loadTasks = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/tasks');
-            const data = await response.json();
+            const tasks = await getTasks();
+            dispatch(
+                {
+                    type: 'set_tasks',
+                    payload: tasks
+                }
+            )
         } catch (error) {
-            console.error('Erorr fetching las tasks. ', error)
+            console.error('Error fetching tasks. ', error)
         }
     }
 
     // Añadir item
-    const handleAddItem = (item) => {
-        dispatch(
-            {
-                type: 'add_item',
-                payload: item
-            }
-        );
+    const handleAddItem = async (item) => {
+        try {
+            const newTask = await createTask(item);
+            dispatch(
+                {
+                    type: 'add_item',
+                    payload: newTask
+                }
+            );
+        } catch (error) {
+            console.error('Error agregando tasks. ', error)
+        }
     }
     // Eliminar item
-    const handleDelItem = (id) => {
-        dispatch(
-            {
-                type: 'del_item',
-                payload: id
-            }
-        );
+    const handleDelItem = async (id) => {
+        try {
+            await deleteTask(id);
+            dispatch(
+                {
+                    type: 'del_item',
+                    payload: id
+                }
+            );
+        } catch (error) {
+            console.error('Error eliminando tasks. ', error)
+        }
     }
     // Tachar item
-    const handleCrossItem = (id) => {
-        dispatch(
-            {
-                type: 'cross_item',
-                payload: id
-            }
-        );
-    }
+    const handleCrossItem = async (id) => {
+        try {
+            await updateTask(id);
+            dispatch(
+                {
+                    type: 'cross_item',
+                    payload: id
+                }
+            );
+        } catch (error) {
+            console.error('Error upgradeando tasks. ', error)
+        }
+    };
+    
+    useEffect(() => {
+        loadTasks();
+      }, []);
 
     return {
         useControlList,
