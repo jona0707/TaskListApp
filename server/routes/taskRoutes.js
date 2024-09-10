@@ -7,7 +7,7 @@ const { getTask, createTask, deleteTask, updateTask, toggleTask } = require('../
 router.get('/tasks',getTask);
 router.post('/tasks',createTask);
 router.delete('/tasks/:id',deleteTask);
-router.patch('/task/:id',toggleTask); // Patch solo hace upgrade a ciertos elementos.
+router.patch('/tasks/:id',toggleTask); // Patch solo hace upgrade a ciertos elementos.
 
 module.exports = router;
 
